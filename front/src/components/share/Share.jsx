@@ -15,8 +15,8 @@ export default function Share() {
     if (file) {
       const data = new FormData();
       const fileName = Date.now() + file.name;
-      data.append("file", file);
       data.append("name", fileName);
+      data.append("file", file);
       newPost.img = fileName;
 
       try {
@@ -27,6 +27,7 @@ export default function Share() {
     }
     try {
       await axios.post("/posts/", newPost);
+      window.location.reload();
     } catch (err) {}
   };
 
