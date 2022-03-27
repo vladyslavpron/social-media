@@ -5,6 +5,7 @@ import "./Feed.css";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import { NestCamWiredStandTwoTone } from "@mui/icons-material";
+import { useMediaQuery } from "@mui/material";
 
 export default function Feed({ username }) {
   const [posts, setPosts] = useState([]);
@@ -28,7 +29,7 @@ export default function Feed({ username }) {
   return (
     <div className="feed">
       <div className="feedWrapper">
-        <Share />
+        {username === user.username && <Share />}
         {posts.map((post) => (
           <Post key={post._id} post={post} />
         ))}
